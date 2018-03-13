@@ -1,43 +1,35 @@
 package com.example.elcha.c9_p23;
-import android.support.v4.app.FragmentManager;
+import android.app.FragmentManager;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.SeekBar;
-import android.view.View;
+import android.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
-    private Seekbar_Fragment fr1;
-    private Yellow_Fragment fr2;
-    private static final String SEEKBAR_FRAGMENT = "SEEKBAR_TAG";
-    private static final String YELLOW_FRAGMENT = "YELLOW_TAG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentManager fm = getSupportFragmentManager();
-        fr1 = (Seekbar_Fragment)fm.findFragmentByTag(SEEKBAR_FRAGMENT);
-        fr2 = (Yellow_Fragment)fm.findFragmentByTag(YELLOW_FRAGMENT);
-        if (fr1 == null){
-            fr1 = new Seekbar_Fragment();
-            fm.beginTransaction()
-                    .add(R.id.fragment_seekbar, fr1,SEEKBAR_FRAGMENT)
-                    .commit();
+        setContentView(R.layout.activity_main);
+
+        FragmentManager fm = getFragmentManager();
+
+        if (fm.findFragmentById(R.id.seekbar_fragment) == null && fm.findFragmentById(R.id.yellow_fragment) == null) {
+            FragmentTransaction trans = fm.beginTransaction();
+            seekbar_fragment fr1 = new seekbar_fragment();
+            yellow_fragment fr2 = new yellow_fragment();
+            trans.add(R.id.seekbar_fragment, fr1);
+            trans.add(R.id.yellow_fragment, fr2);
+            trans.commit();
         }
-
-
-        if (fr2 == null){
-            fr2 = new Yellow_Fragment();
-            fm.beginTransaction()
-                    .add(R.id.fragment_yellow,fr2,YELLOW_FRAGMENT)
-                    .commit();
-        }
-
-
-
-
-
-
-
     }
-
+    public void seekColor(float color) {
+        yellow_fragment fr2 = (yellow_fragment) getFragmentManager().findFragmentById(R.id.yellow_fragment);
+        int alpha = Math.round(Color.alpha(Color.YELLOW) * color);
+        int r = Color.red(Color.YELLOW);
+        int g = Color.green(Color.YELLOW);
+        int b = Color.blue(Color.YELLOW);
+        int newColor = Color.argb(alpha, r, g, b);
+        fr2.setColor(newColor);
+    }
 }

@@ -2,9 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFF00"
-    tools:context="com.example.elcha.c9_p23.Yellow_Fragment">
+    tools:context="com.example.elcha.c9_p23.seekbar_fragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <SeekBar
+        android:id="@+id/sbdim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>
