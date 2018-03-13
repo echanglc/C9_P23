@@ -2,22 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/lm"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.elcha.c9_p23.MainActivity">
+    android:orientation="vertical">
 
     <fragment
-        android:id="@+id/fr1"
-        android:name="com.example.elcha.c9_p23.Seekbar_Fragment"
+        android:id="@+id/seekbar_fragment"
+        android:name="com.example.elcha.c9_p23.seekbar_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <fragment
-        android:id="@+id/fr2"
-        android:name="com.example.elcha.c9_p23.Yellow_Fragment"
+        android:id="@+id/yellow_fragment"
+        android:name="com.example.elcha.c9_p23.yellow_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="4" />
